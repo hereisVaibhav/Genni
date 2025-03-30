@@ -3,8 +3,6 @@
  *
  * $ npm install @google/generative-ai
  *
- * See the getting started guide for more information
- * https://ai.google.dev/gemini-api/docs/get-started/node
  */
 
 import {
@@ -13,7 +11,7 @@ import {
     HarmBlockThreshold,
   } from "@google/generative-ai";
   
-  const apiKey = "AIzaSyAk38Hqs2n7yuf7eKG7pbJUiQ2aQrqfgkA";
+  const apiKey = ""; // Here add your API key
   const genAI = new GoogleGenerativeAI(apiKey);
   
   const model = genAI.getGenerativeModel({
