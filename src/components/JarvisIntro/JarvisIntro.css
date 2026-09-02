@@ -1,0 +1,230 @@
+.jarvis-intro-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #050811;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: #e0f2fe;
+    font-family: 'Outfit', sans-serif;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.jarvis-intro-overlay.exiting {
+    opacity: 0;
+    transform: scale(1.15);
+    filter: blur(10px);
+    pointer-events: none;
+}
+
+/* Background Cyber Grid */
+.jarvis-grid-background {
+    position: absolute;
+    inset: 0;
+    background-image: 
+        linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+    pointer-events: none;
+}
+
+.jarvis-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, transparent 30%, rgba(5, 8, 17, 0.95) 90%);
+    pointer-events: none;
+}
+
+/* Arc Reactor Core HUD Ring */
+.jarvis-core-wrapper {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.hud-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid transparent;
+}
+
+.outer-ring {
+    width: 260px;
+    height: 260px;
+    border: 2px dashed rgba(56, 189, 248, 0.4);
+    border-top-color: #38bdf8;
+    border-bottom-color: #818cf8;
+    animation: spinClockwise 14s linear infinite;
+}
+
+.middle-ring {
+    width: 210px;
+    height: 210px;
+    border: 2px dotted rgba(129, 140, 248, 0.5);
+    border-left-color: #c084fc;
+    border-right-color: #38bdf8;
+    animation: spinCounterClockwise 10s linear infinite;
+}
+
+.inner-ring {
+    width: 160px;
+    height: 160px;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+}
+
+.ticks-ring {
+    width: 180px;
+    height: 180px;
+    border: 2px dashed rgba(192, 132, 252, 0.3);
+    animation: spinClockwise 20s linear infinite;
+}
+
+/* Arc Core Center Glowing Crystal */
+.arc-reactor-core {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(56, 189, 248, 0.9) 0%, rgba(129, 140, 248, 0.4) 60%, transparent 100%);
+    box-shadow: 0 0 45px rgba(56, 189, 248, 0.8), inset 0 0 20px rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: corePulse 2.5s ease-in-out infinite alternate;
+}
+
+.core-symbol {
+    font-size: 28px;
+    color: #ffffff;
+    text-shadow: 0 0 15px #38bdf8;
+}
+
+/* HUD Corner Telemetry */
+.hud-corner {
+    position: absolute;
+    font-family: monospace;
+    font-size: 11px;
+    color: rgba(56, 189, 248, 0.6);
+    letter-spacing: 1.5px;
+}
+
+.top-left { top: 30px; left: 40px; }
+.top-right { top: 30px; right: 40px; }
+.bottom-left { bottom: 30px; left: 40px; }
+.bottom-right { bottom: 30px; right: 40px; }
+
+/* Text & Progress Bar */
+.jarvis-hud-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 480px;
+    padding: 0 20px;
+    text-align: center;
+}
+
+.jarvis-title {
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: #ffffff;
+    margin-bottom: 24px;
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+}
+
+.jarvis-sub {
+    color: #38bdf8;
+    font-weight: 400;
+}
+
+.boot-progress-bar-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.boot-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+    box-shadow: 0 0 12px #38bdf8;
+    transition: width 0.15s ease-out;
+}
+
+.boot-status-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-family: monospace;
+    color: #94a3b8;
+    letter-spacing: 1px;
+}
+
+.status-percentage {
+    color: #38bdf8;
+    font-weight: 700;
+}
+
+/* Enter Button */
+.jarvis-enter-btn {
+    margin-top: 30px;
+    position: relative;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.2) 0%, rgba(129, 140, 248, 0.2) 100%);
+    border: 1px solid rgba(56, 189, 248, 0.6);
+    border-radius: 30px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+    animation: btnBounce 1.5s ease-in-out infinite alternate;
+}
+
+.jarvis-enter-btn:hover {
+    background: linear-gradient(135deg, rgba(56, 189, 248, 0.5) 0%, rgba(129, 140, 248, 0.5) 100%);
+    border-color: #ffffff;
+    box-shadow: 0 0 35px rgba(56, 189, 248, 0.6);
+    transform: translateY(-2px);
+}
+
+@keyframes spinClockwise {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes spinCounterClockwise {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+}
+
+@keyframes corePulse {
+    0% { transform: scale(0.92); box-shadow: 0 0 30px rgba(56, 189, 248, 0.6); }
+    100% { transform: scale(1.08); box-shadow: 0 0 60px rgba(56, 189, 248, 1); }
+}
+
+@keyframes btnBounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-4px); }
+}

@@ -1,0 +1,436 @@
+/* High-Tech Animated HUD Telemetry Visual Array (Image 2 Reference Style) */
+.pure-hud-visual-array {
+    width: 100%;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+/* Floating Header Bar */
+.hud-floating-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px stroke rgba(56, 189, 248, 0.25);
+}
+
+.hud-brand-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.floating-pulse-beacon {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #38bdf8;
+    box-shadow: 0 0 12px #38bdf8;
+    animation: beaconPulse 1.8s infinite ease-in-out;
+}
+
+.hud-system-title {
+    font-family: monospace;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: #e0f2fe;
+}
+
+.hud-tag-pill {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+}
+
+.floating-customize-btn {
+    background: transparent;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    color: #38bdf8;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.floating-customize-btn:hover {
+    background: rgba(56, 189, 248, 0.2);
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+}
+
+/* Floating Visual Grid (4 Columns) */
+.floating-visual-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+}
+
+@media (max-width: 900px) {
+    .floating-visual-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 550px) {
+    .floating-visual-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Individual Floating Visual Items (NO CARDS / NO SOLID BACKGROUND BOXES) */
+.hud-floating-visual-item {
+    position: relative;
+    background: transparent;
+    padding: 16px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 240px;
+    cursor: pointer;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hud-floating-visual-item:hover {
+    transform: translateY(-5px) scale(1.03);
+    filter: drop-shadow(0 0 20px rgba(56, 189, 248, 0.6));
+}
+
+.visual-meta-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.visual-code {
+    font-family: monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: #94a3b8;
+}
+
+.visual-change.positive {
+    font-size: 11px;
+    font-weight: 800;
+    color: #4ade80;
+}
+
+.visual-tag {
+    font-size: 10px;
+    font-weight: 800;
+    color: #c084fc;
+}
+
+.visual-val-display {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 8px;
+}
+
+.visual-val-display.text-center {
+    align-items: center;
+}
+
+.visual-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #e2e8f0;
+}
+
+.visual-price {
+    font-size: 24px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+}
+
+/* 1. LIVE ANIMATED SINE-WAVE RIPPLE SCOPE & 3D PILLARS */
+.live-wave-scope-box {
+    width: 100%;
+    margin: 6px 0;
+}
+
+.animated-wave-stroke {
+    stroke-dasharray: 400;
+    stroke-dashoffset: 400;
+    animation: waveStrokeFlow 3s ease-in-out infinite alternate;
+}
+
+.animated-wave-path {
+    animation: wavePathPulse 3s ease-in-out infinite alternate;
+}
+
+.animated-3d-pillars {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 35px;
+    margin-top: 6px;
+    padding: 0 4px;
+}
+
+.pillar {
+    width: 6px;
+    background: linear-gradient(180deg, #38bdf8, #818cf8);
+    border-radius: 4px;
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+    animation: pillarPulse 1.8s ease-in-out infinite alternate;
+}
+
+.p1 { height: 40%; animation-delay: 0.1s; }
+.p2 { height: 75%; animation-delay: 0.3s; }
+.p3 { height: 50%; animation-delay: 0.5s; }
+.p4 { height: 95%; animation-delay: 0.2s; }
+.p5 { height: 60%; animation-delay: 0.4s; }
+.p6 { height: 85%; animation-delay: 0.6s; }
+.p7 { height: 45%; animation-delay: 0.2s; }
+
+/* 2. DUAL SPINNING HUD GAUGE RINGS */
+.spinning-ring-hud-wrapper {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.outer-hud-spinner {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 3px dashed rgba(56, 189, 248, 0.7);
+    border-top-color: #38bdf8;
+    border-bottom-color: #818cf8;
+    animation: spinClockwise 8s linear infinite;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+}
+
+.inner-hud-spinner {
+    position: absolute;
+    inset: 12px;
+    border-radius: 50%;
+    border: 2px dotted rgba(192, 132, 252, 0.7);
+    border-left-color: #c084fc;
+    border-right-color: #38bdf8;
+    animation: spinCounter 6s linear infinite;
+}
+
+.gauge-center-val {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+}
+
+.big-gauge-num {
+    font-size: 20px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.gauge-label {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #38bdf8;
+}
+
+/* 3. MORPHING AURORA LIQUID FLUID ORB (IMAGE 2 REFERENCE) */
+.aurora-liquid-blob-container {
+    width: 100%;
+    height: 105px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 6px 0;
+}
+
+.aurora-fluid-blob {
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, #0284c7 0%, #38bdf8 40%, #818cf8 70%, #c084fc 100%);
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    box-shadow: 0 0 25px rgba(56, 189, 248, 0.6), inset 0 0 15px rgba(255, 255, 255, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: blobMorph 7s ease-in-out infinite alternate;
+}
+
+.blob-inner-core {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.blob-percentage {
+    font-size: 18px;
+    font-weight: 800;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.blob-label {
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #e0f2fe;
+}
+
+.aurora-news-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-top: 4px;
+}
+
+/* 4. 3D ROTATING WIREFRAME CRYSTAL PRISM (IMAGE 2 REFERENCE) */
+.prism-3d-wrapper {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 400px;
+    margin: 6px 0;
+}
+
+.wireframe-prism-cube {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    transform-style: preserve-3d;
+    animation: prismRotate 10s linear infinite;
+}
+
+.prism-face {
+    position: absolute;
+    inset: 0;
+    border: 1.5px solid rgba(56, 189, 248, 0.8);
+    background: rgba(56, 189, 248, 0.1);
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+}
+
+.prism-face.front  { transform: rotateY(0deg) translateZ(25px); }
+.prism-face.back   { transform: rotateY(180deg) translateZ(25px); }
+.prism-face.right  { transform: rotateY(90deg) translateZ(25px); }
+.prism-face.left   { transform: rotateY(-90deg) translateZ(25px); }
+.prism-face.top    { transform: rotateX(90deg) translateZ(25px); }
+.prism-face.bottom { transform: rotateX(-90deg) translateZ(25px); }
+
+.prism-briefing-lbl {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #38bdf8;
+    text-align: center;
+    margin-top: 4px;
+}
+
+.floating-hover-hint {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #38bdf8;
+    align-self: flex-end;
+    margin-top: 10px;
+    transition: transform 0.2s ease;
+}
+
+.hud-floating-visual-item:hover .floating-hover-hint {
+    transform: translateX(4px);
+}
+
+/* Custom HUD Accents for YouTube, Anime, Medicine, Supercars & Gaming */
+.yt-blob {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #f43f5e 100%) !important;
+    box-shadow: 0 0 25px rgba(239, 68, 68, 0.6) !important;
+}
+
+.anime-spinner {
+    border-color: #c084fc !important;
+    border-top-color: #e879f9 !important;
+    box-shadow: 0 0 20px rgba(192, 132, 252, 0.5) !important;
+}
+
+.auto-cube .prism-face {
+    border-color: #f59e0b !important;
+    background: rgba(245, 158, 11, 0.15) !important;
+    box-shadow: 0 0 15px rgba(245, 158, 11, 0.5) !important;
+}
+
+.gaming-blob {
+    background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 50%, #8b5cf6 100%) !important;
+    box-shadow: 0 0 25px rgba(6, 182, 212, 0.6) !important;
+}
+
+@keyframes waveStrokeFlow {
+    0% { stroke-dashoffset: 400; }
+    100% { stroke-dashoffset: 0; }
+}
+
+@keyframes wavePathPulse {
+    0% { transform: scaleY(0.9); }
+    100% { transform: scaleY(1.1); }
+}
+
+@keyframes pillarPulse {
+    0% { transform: scaleY(0.4); opacity: 0.6; }
+    100% { transform: scaleY(1.2); opacity: 1; filter: drop-shadow(0 0 10px #38bdf8); }
+}
+
+@keyframes spinClockwise {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes spinCounter {
+    from { transform: rotate(360deg); }
+    to { transform: rotate(0deg); }
+}
+
+@keyframes blobMorph {
+    0% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: rotate(0deg) scale(0.95);
+    }
+    50% {
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+        transform: rotate(180deg) scale(1.08);
+    }
+    100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: rotate(360deg) scale(0.95);
+    }
+}
+
+@keyframes prismRotate {
+    0% { transform: rotateX(0deg) rotateY(0deg); }
+    100% { transform: rotateX(360deg) rotateY(360deg); }
+}
+
+@keyframes beaconPulse {
+    0% { opacity: 0.4; transform: scale(0.9); }
+    50% { opacity: 1; transform: scale(1.2); }
+    100% { opacity: 0.4; transform: scale(0.9); }
+}

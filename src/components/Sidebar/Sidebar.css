@@ -1,67 +1,152 @@
-.sidebar{
-    min-height: 100vh;
-    display: inline-flex;
+.sidebar {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    height: calc(100vh - 20px);
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background-color: #f0f4f9;
-    padding: 25px 15px;
+    background: rgba(8, 12, 28, 0.96);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 22px;
+    padding: 20px 18px;
+    z-index: 9000;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.35s ease, width 0.35s ease;
+    box-shadow: 10px 0 45px rgba(0, 0, 0, 0.6), 0 0 40px rgba(56, 189, 248, 0.06);
+    width: 260px;
 }
 
-.sidebar img{
-    width: 20px;
+.sidebar.closed {
+    transform: translateX(-100%);
+    opacity: 0;
+    width: 0;
+    padding: 0;
+    border: none;
+    pointer-events: none;
 }
 
-.sidebar .menue{
-    display: block;
-    margin-left: 10px;
+.sidebar.open {
+    transform: translateX(0);
+    opacity: 1;
+    width: 260px;
+    pointer-events: auto;
+}
+
+.sidebar .top {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.sidebar .menu-wrapper {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
     cursor: pointer;
+    transition: all 0.2s ease;
+    margin-bottom: 15px;
 }
 
-.sidebar .new-chat{
-    margin-top: 10px;
+.sidebar .menu-wrapper:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+.sidebar .menue {
+    width: 20px;
+    height: 20px;
+    filter: invert(0.9);
+}
+
+.sidebar .new-chat {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    padding: 5px 10px;
-    background-color: #e6eaf1;
+    gap: 12px;
+    padding: 12px 18px;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(168, 85, 247, 0.25));
+    border: 1px solid rgba(99, 102, 241, 0.4);
     border-radius: 50px;
-    font: 5px;
-    color: gray;
-    cursor: pointer;    
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.sidebar .recent{
+.sidebar .new-chat:hover {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.4), rgba(168, 85, 247, 0.4));
+    border-color: rgba(168, 85, 247, 0.6);
+    transform: translateY(-2px);
+}
+
+.sidebar .new-chat img {
+    width: 18px;
+    height: 18px;
+    filter: invert(0.9);
+}
+
+.sidebar .recent {
     display: flex;
     flex-direction: column;
+    width: 100%;
+    margin-top: 25px;
 }
 
-.sidebar .recent-title{
-    margin-top: 30px;
-    margin-bottom: 20px;
+.sidebar .recent-title {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-sub);
+    margin-bottom: 12px;
+    padding-left: 8px;
 }
 
-.sidebar .recent-entry{
-    display: flex;
-    align-items: start;
-    gap: 10px;
-    padding: 10px;
-    padding-right: 40px;
-    border-radius: 50px;
-    color: #282828;
-    cursor: pointer;
-}
-
-.sidebar .recent-entry:hover{
-    background-color: #e2e6eb;
-}
-
-.sidebar .bottom{
+.sidebar .recent-list {
     display: flex;
     flex-direction: column;
+    gap: 6px;
+    max-height: 50vh;
+    overflow-y: auto;
 }
 
-.sidebar .bottom-item{
-    padding-right: 10px;
+.sidebar .recent-entry {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    color: var(--text-main);
     cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    white-space: nowrap;
 }
 
+.sidebar .recent-entry:hover {
+    background-color: var(--bg-card-hover);
+    color: #ffffff;
+    transform: translateX(3px);
+}
+
+.sidebar .recent-entry img {
+    width: 18px;
+    height: 18px;
+    filter: invert(0.85);
+}
+
+.sidebar .bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+}
